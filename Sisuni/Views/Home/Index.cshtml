@@ -1,31 +1,32 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<section id="home" class="video-section js-height-full" style="height: 616px;">
+    <div class="overlay"></div>
+    <div class="home-text-wrapper relative container">
+        <div class="home-message">
+            <p>Universidad Nacional de Medicina</p>
+            <small>Aplica a una de nuestras becas arancelarias y define tu futuro en una de las mejores universidades de la región.</small>
+            <div class="btn-wrapper">
+                <div class="text-center">
+                    <a href="#" class="btn btn-primary wow slideInLeft" style="visibility: visible; animation-name: slideInLeft;">Read More</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="#" class="btn btn-default wow slideInRight" style="visibility: visible; animation-name: slideInRight;">Buy Now</a>
+                </div>
+            </div><!-- end row -->
+        </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+
+        <div id="video_background_video_0" style="z-index: -1; position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; overflow: hidden;">
+            <video width="1096" height="616" autoplay="" loop="" onended="this.play()" style="position: absolute; top: 0px; left: -10px;">
+                <source src="~/Content/upload/preview.mp4" type="video/mp4">
+                <source src="~/Content/upload/preview.webm" type="video/webm">
+                <source src="~/Content/upload/preview.ogg" type="video/ogg">
+            </video>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</section>
+

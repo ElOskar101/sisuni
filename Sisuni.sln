@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisuni", "Sisuni\Sisuni.csproj", "{882C07E9-BC7D-4FE9-A6C2-F8B178B8A812}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{F335E17A-271E-4B3D-B3B3-8307AB27B41A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisuniWebApi", "SisuniWebApi\SisuniWebApi.csproj", "{CBD72A24-FC61-47F0-BF1F-B65966474CD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisuni", "Sisuni\Sisuni.csproj", "{97C1AAFC-C93E-47F2-94F8-CE36C610FD4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{882C07E9-BC7D-4FE9-A6C2-F8B178B8A812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{882C07E9-BC7D-4FE9-A6C2-F8B178B8A812}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{882C07E9-BC7D-4FE9-A6C2-F8B178B8A812}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{882C07E9-BC7D-4FE9-A6C2-F8B178B8A812}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F335E17A-271E-4B3D-B3B3-8307AB27B41A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F335E17A-271E-4B3D-B3B3-8307AB27B41A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F335E17A-271E-4B3D-B3B3-8307AB27B41A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{CBD72A24-FC61-47F0-BF1F-B65966474CD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBD72A24-FC61-47F0-BF1F-B65966474CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBD72A24-FC61-47F0-BF1F-B65966474CD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97C1AAFC-C93E-47F2-94F8-CE36C610FD4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97C1AAFC-C93E-47F2-94F8-CE36C610FD4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97C1AAFC-C93E-47F2-94F8-CE36C610FD4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97C1AAFC-C93E-47F2-94F8-CE36C610FD4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
