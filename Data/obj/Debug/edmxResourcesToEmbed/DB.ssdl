@@ -25,9 +25,9 @@
     <Key>
       <PropertyRef Name="CourseStudentID" />
     </Key>
-    <Property Name="CourseStudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CSCourseID" Type="int" Nullable="false" />
-    <Property Name="CSStudentID" Type="int" Nullable="false" />
+    <Property Name="CourseStudentID" Type="int" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="CourseID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Faculty">
     <Key>
@@ -42,9 +42,10 @@
       <PropertyRef Name="StudentID" />
     </Key>
     <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nchar" MaxLength="50" Nullable="false" />
     <Property Name="Identification" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="CareerID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Teacher">
@@ -53,14 +54,6 @@
     </Key>
     <Property Name="TeacherID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="UserID" />
-    </Key>
-    <Property Name="UserID" Type="int" Nullable="false" />
-    <Property Name="UserName" Type="nchar" MaxLength="20" />
-    <Property Name="UserPassword" Type="nchar" MaxLength="20" />
   </EntityType>
   <Association Name="FK_Career_Faculty">
     <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
@@ -71,30 +64,6 @@
       </Principal>
       <Dependent Role="Career">
         <PropertyRef Name="FacultyID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Course_Student_Course">
-    <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
-    <End Role="CourseStudent" Type="Self.CourseStudent" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Courses">
-        <PropertyRef Name="CourseID" />
-      </Principal>
-      <Dependent Role="CourseStudent">
-        <PropertyRef Name="CSCourseID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Course_Student_Student">
-    <End Role="Student" Type="Self.Student" Multiplicity="1" />
-    <End Role="CourseStudent" Type="Self.CourseStudent" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Student">
-        <PropertyRef Name="StudentID" />
-      </Principal>
-      <Dependent Role="CourseStudent">
-        <PropertyRef Name="CSStudentID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -122,15 +91,39 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Student_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+  <Association Name="FK_CourseStudent_Course">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+    <End Role="CourseStudent" Type="Self.CourseStudent" Multiplicity="0..1" />
     <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="UserID" />
+      <Principal Role="Courses">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CourseStudent">
+        <PropertyRef Name="CourseStudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseStudent_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="CourseStudent" Type="Self.CourseStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="CourseStudent">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Career">
+    <End Role="Career" Type="Self.Career" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Career">
+        <PropertyRef Name="CareerID" />
       </Principal>
       <Dependent Role="Student">
-        <PropertyRef Name="StudentID" />
+        <PropertyRef Name="CareerID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -141,18 +134,9 @@
     <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Career_Faculty" Association="Self.FK_Career_Faculty">
       <End Role="Faculty" EntitySet="Faculty" />
       <End Role="Career" EntitySet="Career" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Course_Student_Course" Association="Self.FK_Course_Student_Course">
-      <End Role="Courses" EntitySet="Courses" />
-      <End Role="CourseStudent" EntitySet="CourseStudent" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Course_Student_Student" Association="Self.FK_Course_Student_Student">
-      <End Role="Student" EntitySet="Student" />
-      <End Role="CourseStudent" EntitySet="CourseStudent" />
     </AssociationSet>
     <AssociationSet Name="FK_Courses_Career" Association="Self.FK_Courses_Career">
       <End Role="Career" EntitySet="Career" />
@@ -162,8 +146,16 @@
       <End Role="Teacher" EntitySet="Teacher" />
       <End Role="Courses" EntitySet="Courses" />
     </AssociationSet>
-    <AssociationSet Name="FK_Student_User" Association="Self.FK_Student_User">
-      <End Role="User" EntitySet="User" />
+    <AssociationSet Name="FK_CourseStudent_Course" Association="Self.FK_CourseStudent_Course">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="CourseStudent" EntitySet="CourseStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseStudent_Student" Association="Self.FK_CourseStudent_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="CourseStudent" EntitySet="CourseStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Career" Association="Self.FK_Student_Career">
+      <End Role="Career" EntitySet="Career" />
       <End Role="Student" EntitySet="Student" />
     </AssociationSet>
   </EntityContainer>

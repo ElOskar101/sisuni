@@ -27,8 +27,8 @@
     <EntitySetMapping Name="CourseStudent">
       <EntityTypeMapping TypeName="SisuniModel.CourseStudent">
         <MappingFragment StoreEntitySet="CourseStudent">
-          <ScalarProperty Name="CSStudentID" ColumnName="CSStudentID" />
-          <ScalarProperty Name="CSCourseID" ColumnName="CSCourseID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
           <ScalarProperty Name="CourseStudentID" ColumnName="CourseStudentID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -46,6 +46,7 @@
       <EntityTypeMapping TypeName="SisuniModel.Student">
         <MappingFragment StoreEntitySet="Student">
           <ScalarProperty Name="CareerID" ColumnName="CareerID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Identification" ColumnName="Identification" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -58,15 +59,6 @@
         <MappingFragment StoreEntitySet="Teacher">
           <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="User">
-      <EntityTypeMapping TypeName="SisuniModel.User">
-        <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -17,12 +17,12 @@ namespace SisuniWebApi.Controllers{
             using (var db = new Context()) {
 
                 var query = from cs in db.CourseStudent
-                            join c in db.Courses on cs.CSStudentID equals id where c.CourseID == cs.CSCourseID
+                            join c in db.Courses on cs.StudentID equals id where c.CourseID == cs.CourseID
                             select new CourseStudentCourse {
-                                CSCourseID = cs.CSCourseID,
-                                CSStudentID = cs.CSStudentID,
+                                CSCourseID = cs.CourseID,
+                                CSStudentID = cs.StudentID,
                                 CourseStudentID = cs.CourseStudentID,
-                                CourseID = cs.CSCourseID,
+                                CourseID = cs.CourseID,
                                 Name = c.Name,
                                 Section = c.Section,
                                 Credits = c.Credits,
@@ -41,7 +41,7 @@ namespace SisuniWebApi.Controllers{
 
             using (var db = new Context()) {
 
-                var courseStudent = db.CourseStudent.Where(x => x.CSCourseID == CourseID && x.CSStudentID == StudentID).FirstOrDefault();
+                var courseStudent = db.CourseStudent.Where(x => x.CourseID == CourseID && x.StudentID == StudentID).FirstOrDefault();
 
                 if(courseStudent != null) {
 

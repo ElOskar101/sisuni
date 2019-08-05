@@ -84,9 +84,6 @@
     <Compile Include="Teacher.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\CourseStudentCourse.cs" />
   </ItemGroup>
   <ItemGroup>

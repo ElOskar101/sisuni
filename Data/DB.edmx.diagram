@@ -6,11 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="0724ba1b78474888b3b572d27b53fe61" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="SisuniModel.Career" Width="1.5" PointX="3" PointY="3.375" />
-        <EntityTypeShape EntityType="SisuniModel.Courses" Width="1.5" PointX="5.25" PointY="3.125" />
-        <EntityTypeShape EntityType="SisuniModel.CourseStudent" Width="1.5" PointX="7.5" PointY="5.25" />
+        <EntityTypeShape EntityType="SisuniModel.Courses" Width="1.5" PointX="8.25" PointY="3.125" />
+        <EntityTypeShape EntityType="SisuniModel.CourseStudent" Width="1.5" PointX="10.5" PointY="3.5" />
         <EntityTypeShape EntityType="SisuniModel.Faculty" Width="1.5" PointX="0.75" PointY="3.625" />
-        <EntityTypeShape EntityType="SisuniModel.Student" Width="1.5" PointX="5.25" PointY="7" />
-        <EntityTypeShape EntityType="SisuniModel.Teacher" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="SisuniModel.Student" Width="1.5" PointX="5.25" PointY="3.25" />
+        <EntityTypeShape EntityType="SisuniModel.Teacher" Width="1.5" PointX="6" PointY="0.75" />
         <AssociationConnector Association="SisuniModel.FK_Career_Faculty" />
         <AssociationConnector Association="SisuniModel.FK_Courses_Career" />
         <AssociationConnector Association="SisuniModel.FK_Student_Career" />
