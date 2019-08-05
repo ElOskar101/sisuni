@@ -107,6 +107,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admin\css\AdminLTE.css" />
+    <Content Include="Content\admin\css\AdminLTE.min.css" />
+    <Content Include="Content\admin\css\blue.css" />
+    <Content Include="Content\admin\css\bootstrap.css" />
+    <Content Include="Content\admin\css\bootstrap.min.css" />
+    <Content Include="Content\admin\css\font-awesome.css" />
+    <Content Include="Content\admin\css\font-awesome.min.css" />
+    <Content Include="Content\admin\css\ionicons.css" />
+    <Content Include="Content\admin\css\ionicons.min.css" />
+    <Content Include="Content\admin\css\_all-skins.css" />
+    <Content Include="Content\admin\css\_all-skins.min.css" />
+    <Content Include="Content\admin\js\icheck.js" />
+    <Content Include="Content\admin\js\icheck.min.js" />
+    <Content Include="Content\admin\js\adminlte.js" />
+    <Content Include="Content\admin\js\adminlte.min.js" />
+    <Content Include="Content\admin\js\bootstrap.js" />
+    <Content Include="Content\admin\js\bootstrap.min.js" />
+    <Content Include="Content\admin\js\demo.js" />
+    <Content Include="Content\admin\js\fastclick.js" />
+    <Content Include="Content\admin\js\jquery.js" />
+    <Content Include="Content\admin\js\jquery.min.js" />
+    <Content Include="Content\admin\js\jquery.slimscroll.js" />
+    <Content Include="Content\admin\js\jquery.slimscroll.min.js" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap-select.min.css" />
     <Content Include="Content\css\bootstrap-theme.css" />
@@ -116,8 +139,6 @@
     <Content Include="Content\css\carousel.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\prettyPhoto.css" />
-    <Content Include="Content\css\sb-admin.css" />
-    <Content Include="Content\css\sb-admin.min.css" />
     <Content Include="Content\fonts\flaticon.css" />
     <Content Include="Content\fonts\flaticon.html" />
     <Content Include="Content\fonts\Flaticon.svg" />
@@ -130,44 +151,7 @@
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\pattern.png" />
     <Content Include="Content\images\payments.png" />
-    <Content Include="Content\images\prettyPhoto\dark_rounded\btnNext.png" />
-    <Content Include="Content\images\prettyPhoto\dark_rounded\btnPrevious.png" />
-    <Content Include="Content\images\prettyPhoto\dark_rounded\contentPattern.png" />
-    <Content Include="Content\images\prettyPhoto\dark_rounded\default_thumbnail.gif" />
-    <Content Include="Content\images\prettyPhoto\dark_rounded\loader.gif" />
-    <Content Include="Content\images\prettyPhoto\dark_rounded\sprite.png" />
-    <Content Include="Content\images\prettyPhoto\dark_square\btnNext.png" />
-    <Content Include="Content\images\prettyPhoto\dark_square\btnPrevious.png" />
-    <Content Include="Content\images\prettyPhoto\dark_square\contentPattern.png" />
-    <Content Include="Content\images\prettyPhoto\dark_square\default_thumbnail.gif" />
-    <Content Include="Content\images\prettyPhoto\dark_square\loader.gif" />
-    <Content Include="Content\images\prettyPhoto\dark_square\sprite.png" />
-    <Content Include="Content\images\prettyPhoto\default\default_thumb.png" />
-    <Content Include="Content\images\prettyPhoto\default\loader.gif" />
-    <Content Include="Content\images\prettyPhoto\default\sprite.png" />
-    <Content Include="Content\images\prettyPhoto\default\sprite_next.png" />
-    <Content Include="Content\images\prettyPhoto\default\sprite_prev.png" />
-    <Content Include="Content\images\prettyPhoto\default\sprite_x.png" />
-    <Content Include="Content\images\prettyPhoto\default\sprite_y.png" />
-    <Content Include="Content\images\prettyPhoto\facebook\btnNext.png" />
-    <Content Include="Content\images\prettyPhoto\facebook\btnPrevious.png" />
-    <Content Include="Content\images\prettyPhoto\facebook\contentPatternBottom.png" />
-    <Content Include="Content\images\prettyPhoto\facebook\contentPatternLeft.png" />
-    <Content Include="Content\images\prettyPhoto\facebook\contentPatternRight.png" />
-    <Content Include="Content\images\prettyPhoto\facebook\contentPatternTop.png" />
-    <Content Include="Content\images\prettyPhoto\facebook\default_thumbnail.gif" />
-    <Content Include="Content\images\prettyPhoto\facebook\loader.gif" />
-    <Content Include="Content\images\prettyPhoto\facebook\sprite.png" />
-    <Content Include="Content\images\prettyPhoto\light_rounded\btnNext.png" />
-    <Content Include="Content\images\prettyPhoto\light_rounded\btnPrevious.png" />
-    <Content Include="Content\images\prettyPhoto\light_rounded\default_thumbnail.gif" />
-    <Content Include="Content\images\prettyPhoto\light_rounded\loader.gif" />
-    <Content Include="Content\images\prettyPhoto\light_rounded\sprite.png" />
-    <Content Include="Content\images\prettyPhoto\light_square\btnNext.png" />
-    <Content Include="Content\images\prettyPhoto\light_square\btnPrevious.png" />
-    <Content Include="Content\images\prettyPhoto\light_square\default_thumbnail.gif" />
-    <Content Include="Content\images\prettyPhoto\light_square\loader.gif" />
-    <Content Include="Content\images\prettyPhoto\light_square\sprite.png" />
+    <Content Include="Content\images\user.jpg" />
     <Content Include="Content\js\animate.js" />
     <Content Include="Content\js\bootstrap-select.min.js" />
     <Content Include="Content\js\bootstrap.js" />
@@ -180,7 +164,8 @@
     <Content Include="Content\js\parallax.js" />
     <Content Include="Content\js\sb-admin.js" />
     <Content Include="Content\js\sb-admin.min.js" />
-    <Content Include="Content\js\vendor\html5shiv.js" />
+    <Content Include="Content\js\vendor\jquery.slim.js" />
+    <Content Include="Content\js\vendor\jquery.slim.min.js" />
     <Content Include="Content\js\vendor\respond.min.js" />
     <Content Include="Content\js\videobg.js" />
     <Content Include="Content\style.css" />
@@ -248,8 +233,10 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DashController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -276,11 +263,15 @@
     <Content Include="Content\fonts\_flaticon.scss" />
     <Content Include="Content\images\logo.psd" />
     <Content Include="Content\upload\preview.ogg" />
+    <Content Include="Content\js\vendor\jquery.min.map" />
+    <Content Include="Content\js\vendor\jquery.slim.min.map" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Dash\Index.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

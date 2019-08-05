@@ -1,32 +1,131 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
+<!doctype html>
+<html class="  js video audio" lang="en">
+@using System.Web.Optimization
+<head>
 
-<section id="home" class="video-section js-height-full" style="height: 616px;">
-    <div class="overlay"></div>
-    <div class="home-text-wrapper relative container">
-        <div class="home-message">
-            <p>Universidad Nacional de Medicina</p>
-            <small>Aplica a una de nuestras becas arancelarias y define tu futuro en una de las mejores universidades de la región.</small>
-            <div class="btn-wrapper">
-                <div class="text-center">
-                    <a href="#" class="btn btn-primary wow slideInLeft" style="visibility: visible; animation-name: slideInLeft;">Read More</a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a href="#" class="btn btn-default wow slideInRight" style="visibility: visible; animation-name: slideInRight;">Buy Now</a>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Sisuni/@ViewBag.Title</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="~/Content/images/apple-touch-icon.png">
+
+    @Styles.Render("~/bundles/css")
+</head>
+<body>
+    <!-- LOADER -->
+    <div id="preloader" style="display: none;">
+        <img class="preloader" src="~/Content/images/loader.gif" alt="" style="display: none;">
+    </div><!-- end loader -->
+    <!-- END LOADER -->
+
+    <div id="wrapper">
+        <header class="header">
+            <div class="topbar clearfix">
+                <div class="container">
+                    <div class="row-fluid">
+                        <div class="col-md-6 col-sm-6 text-left">
+                            <p>
+                                <strong><i class="fa fa-phone"></i></strong> +90 543 123 45 67 &nbsp;&nbsp;
+                                <strong><i class="fa fa-envelope"></i></strong> <a href="mailto:#">info@yoursite.com</a>
+                            </p>
+                        </div><!-- end left -->
+                        <div class="col-md-6 col-sm-6 hidden-xs text-right">
+                            <div class="social">
+                                <a class="facebook" href="#" data-tooltip="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                                <a class="twitter" href="#" data-tooltip="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                <a class="google" href="#" data-tooltip="tooltip" data-placement="bottom" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+                                <a class="linkedin" href="#" data-tooltip="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                                <a class="pinterest" href="#" data-tooltip="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                            </div><!-- end social -->
+                        </div><!-- end left -->
+                    </div><!-- end row -->
+                </div><!-- end container -->
+            </div><!-- end topbar -->
+            <div class="container">
+                <nav class="navbar navbar-default yamm">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="logo-normal">
+                            <a class="navbar-brand"><img src="~/Content/images/logo.png" alt="" height="100" width="150"></a>
+                        </div>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Acceder", "Index", "Login", new { area = "" }, null)</li>
+
+                        </ul>
+                    </div>
+                </nav><!-- end navbar -->
+            </div><!-- end container -->
+        </header>
+
+        <section id="home" class="video-section js-height-full" style="height: 5000px;">
+            <div class="overlay"></div>
+            <div class="home-text-wrapper relative container">
+                <div class="home-message">
+                    <p>Learning Management System</p>
+                    <small>Edulogy is the ideal choice for your organization, your business and your online education system. Create your online course now with unlimited page templates, color options, and menu features.</small>
+                    <div class="btn-wrapper">
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary wow slideInLeft" style="visibility: visible; animation-name: slideInLeft;">Read More</a> &nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-default wow slideInRight" style="visibility: visible; animation-name: slideInRight;">Buy Now</a>
+                        </div>
+                    </div><!-- end row -->
                 </div>
-            </div><!-- end row -->
-        </div>
+            </div>
+
+            <div id="video_background_video_0" style="z-index: -1; position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; overflow: hidden;">
+                <video width="1450" height="800" autoplay="" loop="" onended="this.play()" style="position: absolute; top: 0px; left: 0px;">
+                    <source src="~/Content/images/video.mp4" type="video/mp4">
+
+                </video>
+            </div>
+        </section>
+
+        <div class="copyrights">
+            <div class="container">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <div class="cop-logo">
+                            <a href="#"><img src="~/Content/images/logo.png" alt="" height="50" width="50"></a>
+                        </div>
+                    </div>
+
+                    <div class="pull-right">
+                        <div class="footer-links">
+                            <ul class="list-inline">
+                                <li>Design : <p>Sisuni</p></li>
+                                <li>Distributed by : <p>ElOskar101 - Cristhel </p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end container -->
+        </div><!-- end copy -->
+    </div><!-- end wrapper -->
+    <!-- jQuery Files -->
+    @Scripts.Render("~/bundles/js")
 
 
-        <div id="video_background_video_0" style="z-index: -1; position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; overflow: hidden;">
-            <video width="1096" height="616" autoplay="" loop="" onended="this.play()" style="position: absolute; top: 0px; left: -10px;">
-                <source src="~/Content/upload/preview.mp4" type="video/mp4">
-                <source src="~/Content/upload/preview.webm" type="video/webm">
-                <source src="~/Content/upload/preview.ogg" type="video/ogg">
-            </video>
-        </div>
-    </div>
-</section>
+</body>
+</html>
+
+
+
 

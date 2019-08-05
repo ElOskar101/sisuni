@@ -17,7 +17,7 @@ namespace Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Student()
         {
-            this.Course_Student = new HashSet<Course_Student>();
+            this.CourseStudent = new HashSet<CourseStudent>();
         }
     
         public int StudentID { get; set; }
@@ -27,6 +27,7 @@ namespace Data
         public int CareerID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Course_Student> Course_Student { get; set; }
+        public virtual ICollection<CourseStudent> CourseStudent { get; set; }
+        public virtual User User { get; set; }
     }
 }

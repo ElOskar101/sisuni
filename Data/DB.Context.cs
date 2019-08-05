@@ -25,11 +25,12 @@ namespace Data
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Career> Career { get; set; }
+        public virtual DbSet<Courses> Courses { get; set; }
+        public virtual DbSet<CourseStudent> CourseStudent { get; set; }
+        public virtual DbSet<Faculty> Faculty { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
-        public virtual DbSet<Career> Career { get; set; }
-        public virtual DbSet<Course_Student> Course_Student { get; set; }
-        public virtual DbSet<Courses> Courses { get; set; }
-        public virtual DbSet<Faculty> Faculty { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }

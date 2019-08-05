@@ -1,31 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SisuniModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Student">
-    <Key>
-      <PropertyRef Name="StudentID" />
-    </Key>
-    <Property Name="StudentID" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Identification" Type="Int32" Nullable="false" />
-    <Property Name="CareerID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Course_Student" Relationship="SisuniModel.FK_Course_Student_Student" FromRole="Student" ToRole="Course_Student" />
-  </EntityType>
-  <EntityType Name="Teacher">
-    <Key>
-      <PropertyRef Name="TeacherID" />
-    </Key>
-    <Property Name="TeacherID" Type="Int32" Nullable="false" />
-    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Courses" Relationship="SisuniModel.FK_Courses_Teacher" FromRole="Teacher" ToRole="Courses" />
-  </EntityType>
   <EntityContainer Name="Context" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Student" EntityType="Self.Student" />
-    <EntitySet Name="Teacher" EntityType="Self.Teacher" />
     <EntitySet Name="Career" EntityType="SisuniModel.Career" />
-    <EntitySet Name="Course_Student" EntityType="SisuniModel.Course_Student" />
     <EntitySet Name="Courses" EntityType="SisuniModel.Courses" />
+    <EntitySet Name="CourseStudent" EntityType="SisuniModel.CourseStudent" />
     <EntitySet Name="Faculty" EntityType="SisuniModel.Faculty" />
+    <EntitySet Name="Student" EntityType="SisuniModel.Student" />
+    <EntitySet Name="Teacher" EntityType="SisuniModel.Teacher" />
+    <EntitySet Name="User" EntityType="SisuniModel.User" />
     <AssociationSet Name="FK_Career_Faculty" Association="SisuniModel.FK_Career_Faculty">
       <End Role="Faculty" EntitySet="Faculty" />
       <End Role="Career" EntitySet="Career" />
@@ -36,15 +18,19 @@
     </AssociationSet>
     <AssociationSet Name="FK_Course_Student_Course" Association="SisuniModel.FK_Course_Student_Course">
       <End Role="Courses" EntitySet="Courses" />
-      <End Role="Course_Student" EntitySet="Course_Student" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Course_Student_Student" Association="SisuniModel.FK_Course_Student_Student">
-      <End Role="Student" EntitySet="Student" />
-      <End Role="Course_Student" EntitySet="Course_Student" />
+      <End Role="CourseStudent" EntitySet="CourseStudent" />
     </AssociationSet>
     <AssociationSet Name="FK_Courses_Teacher" Association="SisuniModel.FK_Courses_Teacher">
       <End Role="Teacher" EntitySet="Teacher" />
       <End Role="Courses" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_Student_Student" Association="SisuniModel.FK_Course_Student_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="CourseStudent" EntitySet="CourseStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_User" Association="SisuniModel.FK_Student_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Student" EntitySet="Student" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Career">
@@ -58,16 +44,6 @@
     <NavigationProperty Name="Faculty" Relationship="SisuniModel.FK_Career_Faculty" FromRole="Career" ToRole="Faculty" />
     <NavigationProperty Name="Courses" Relationship="SisuniModel.FK_Courses_Career" FromRole="Career" ToRole="Courses" />
   </EntityType>
-  <EntityType Name="Course_Student">
-    <Key>
-      <PropertyRef Name="Course_StudentID" />
-    </Key>
-    <Property Name="Course_StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CourseID" Type="Int32" Nullable="false" />
-    <Property Name="StudentID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Courses" Relationship="SisuniModel.FK_Course_Student_Course" FromRole="Course_Student" ToRole="Courses" />
-    <NavigationProperty Name="Student" Relationship="SisuniModel.FK_Course_Student_Student" FromRole="Course_Student" ToRole="Student" />
-  </EntityType>
   <EntityType Name="Courses">
     <Key>
       <PropertyRef Name="CourseID" />
@@ -80,8 +56,18 @@
     <Property Name="TeacherID" Type="Int32" Nullable="false" />
     <Property Name="Schedule" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Career" Relationship="SisuniModel.FK_Courses_Career" FromRole="Courses" ToRole="Career" />
-    <NavigationProperty Name="Course_Student" Relationship="SisuniModel.FK_Course_Student_Course" FromRole="Courses" ToRole="Course_Student" />
+    <NavigationProperty Name="CourseStudent" Relationship="SisuniModel.FK_Course_Student_Course" FromRole="Courses" ToRole="CourseStudent" />
     <NavigationProperty Name="Teacher" Relationship="SisuniModel.FK_Courses_Teacher" FromRole="Courses" ToRole="Teacher" />
+  </EntityType>
+  <EntityType Name="CourseStudent">
+    <Key>
+      <PropertyRef Name="CourseStudentID" />
+    </Key>
+    <Property Name="CourseStudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CSCourseID" Type="Int32" Nullable="false" />
+    <Property Name="CSStudentID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Courses" Relationship="SisuniModel.FK_Course_Student_Course" FromRole="CourseStudent" ToRole="Courses" />
+    <NavigationProperty Name="Student" Relationship="SisuniModel.FK_Course_Student_Student" FromRole="CourseStudent" ToRole="Student" />
   </EntityType>
   <EntityType Name="Faculty">
     <Key>
@@ -91,6 +77,35 @@
     <Property Name="FacultyName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
     <Property Name="FacultyDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="Career" Relationship="SisuniModel.FK_Career_Faculty" FromRole="Faculty" ToRole="Career" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Identification" Type="Int32" Nullable="false" />
+    <Property Name="CareerID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CourseStudent" Relationship="SisuniModel.FK_Course_Student_Student" FromRole="Student" ToRole="CourseStudent" />
+    <NavigationProperty Name="User" Relationship="SisuniModel.FK_Student_User" FromRole="Student" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="TeacherID" />
+    </Key>
+    <Property Name="TeacherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Courses" Relationship="SisuniModel.FK_Courses_Teacher" FromRole="Teacher" ToRole="Courses" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="UserPassword" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Student" Relationship="SisuniModel.FK_Student_User" FromRole="User" ToRole="Student" />
   </EntityType>
   <Association Name="FK_Career_Faculty">
     <End Type="SisuniModel.Faculty" Role="Faculty" Multiplicity="1" />
@@ -118,25 +133,13 @@
   </Association>
   <Association Name="FK_Course_Student_Course">
     <End Type="SisuniModel.Courses" Role="Courses" Multiplicity="1" />
-    <End Type="SisuniModel.Course_Student" Role="Course_Student" Multiplicity="*" />
+    <End Type="SisuniModel.CourseStudent" Role="CourseStudent" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Courses">
         <PropertyRef Name="CourseID" />
       </Principal>
-      <Dependent Role="Course_Student">
-        <PropertyRef Name="CourseID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Course_Student_Student">
-    <End Type="SisuniModel.Student" Role="Student" Multiplicity="1" />
-    <End Type="SisuniModel.Course_Student" Role="Course_Student" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Student">
-        <PropertyRef Name="StudentID" />
-      </Principal>
-      <Dependent Role="Course_Student">
-        <PropertyRef Name="StudentID" />
+      <Dependent Role="CourseStudent">
+        <PropertyRef Name="CSCourseID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -149,6 +152,30 @@
       </Principal>
       <Dependent Role="Courses">
         <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_Student_Student">
+    <End Type="SisuniModel.Student" Role="Student" Multiplicity="1" />
+    <End Type="SisuniModel.CourseStudent" Role="CourseStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="CourseStudent">
+        <PropertyRef Name="CSStudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_User">
+    <End Type="SisuniModel.User" Role="User" Multiplicity="1" />
+    <End Type="SisuniModel.Student" Role="Student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="StudentID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
