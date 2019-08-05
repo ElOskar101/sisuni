@@ -18,6 +18,7 @@ namespace Data
         public Career()
         {
             this.Courses = new HashSet<Courses>();
+            this.Student = new HashSet<Student>();
         }
     
         public int CareerID { get; set; }
@@ -28,5 +29,7 @@ namespace Data
         public virtual Faculty Faculty { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Courses> Courses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student> Student { get; set; }
     }
 }

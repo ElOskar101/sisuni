@@ -15,8 +15,8 @@ namespace Data
     public partial class CourseStudent
     {
         public int CourseStudentID { get; set; }
-        public int CSCourseID { get; set; }
-        public int CSStudentID { get; set; }
+        public int StudentID { get; set; }
+        public int CourseID { get; set; }
     
         public virtual Courses Courses { get; set; }
         public virtual Student Student { get; set; }

@@ -4,20 +4,20 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using SisuniWebApi.ViewModels;
 using Data;
+using Data.ViewModels;
 
 namespace SisuniWebApi.Controllers{
     public class StudentCourseController : ApiController {
 
         // Listado de todos los cursos de un usuario (StudenCourse/{id})
         [HttpGet]
-        public IEnumerable<CourseStudentCourse> Get (int StudentID) {
+        public IEnumerable<CourseStudentCourse> Get (int id) {
 
             using (var db = new Context()) {
 
                 var query = from cs in db.CourseStudent
-                            join c in db.Courses on cs.CSStudentID equals StudentID where c.CourseID == cs.CSCourseID
+                            join c in db.Courses on cs.CSStudentID equals id where c.CourseID == cs.CSCourseID
                             select new CourseStudentCourse {
                                 CSCourseID = cs.CSCourseID,
                                 CSStudentID = cs.CSStudentID,

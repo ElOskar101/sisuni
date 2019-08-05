@@ -5,19 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0724ba1b78474888b3b572d27b53fe61" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="SisuniModel.Career" Width="1.5" PointX="3" PointY="1.375" />
-        <EntityTypeShape EntityType="SisuniModel.Courses" Width="1.5" PointX="5.25" PointY="1" />
-        <EntityTypeShape EntityType="SisuniModel.CourseStudent" Width="1.5" PointX="7.5" PointY="1.5" />
-        <EntityTypeShape EntityType="SisuniModel.Faculty" Width="1.5" PointX="0.75" PointY="1.5" />
-        <EntityTypeShape EntityType="SisuniModel.Student" Width="1.5" PointX="5.25" PointY="8.25" />
-        <EntityTypeShape EntityType="SisuniModel.Teacher" Width="1.5" PointX="3" PointY="5.625" />
-        <EntityTypeShape EntityType="SisuniModel.User" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="SisuniModel.Career" Width="1.5" PointX="3" PointY="3.375" />
+        <EntityTypeShape EntityType="SisuniModel.Courses" Width="1.5" PointX="5.25" PointY="3.125" />
+        <EntityTypeShape EntityType="SisuniModel.CourseStudent" Width="1.5" PointX="7.5" PointY="5.25" />
+        <EntityTypeShape EntityType="SisuniModel.Faculty" Width="1.5" PointX="0.75" PointY="3.625" />
+        <EntityTypeShape EntityType="SisuniModel.Student" Width="1.5" PointX="5.25" PointY="7" />
+        <EntityTypeShape EntityType="SisuniModel.Teacher" Width="1.5" PointX="3" PointY="0.75" />
         <AssociationConnector Association="SisuniModel.FK_Career_Faculty" />
         <AssociationConnector Association="SisuniModel.FK_Courses_Career" />
-        <AssociationConnector Association="SisuniModel.FK_Course_Student_Course" />
+        <AssociationConnector Association="SisuniModel.FK_Student_Career" />
         <AssociationConnector Association="SisuniModel.FK_Courses_Teacher" />
-        <AssociationConnector Association="SisuniModel.FK_Course_Student_Student" />
-        <AssociationConnector Association="SisuniModel.FK_Student_User" />
+        <AssociationConnector Association="SisuniModel.FK_CourseStudent_Course" />
+        <AssociationConnector Association="SisuniModel.FK_CourseStudent_Student" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

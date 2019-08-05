@@ -31,6 +31,5 @@ namespace Data
         public virtual DbSet<Faculty> Faculty { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
-        public virtual DbSet<User> User { get; set; }
     }
 }

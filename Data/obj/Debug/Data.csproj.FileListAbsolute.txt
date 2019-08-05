@@ -9,3 +9,4 @@ C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\obj\Debug\Data.
 C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\obj\Debug\Data.csproj.CopyComplete
 C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\obj\Debug\Data.dll
 C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\obj\Debug\Data.pdb
+C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\obj\Debug\Data.csprojAssemblyReference.cache
