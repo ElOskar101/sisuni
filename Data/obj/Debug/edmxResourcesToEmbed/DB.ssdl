@@ -25,7 +25,7 @@
     <Key>
       <PropertyRef Name="CourseStudentID" />
     </Key>
-    <Property Name="CourseStudentID" Type="int" Nullable="false" />
+    <Property Name="CourseStudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StudentID" Type="int" Nullable="false" />
     <Property Name="CourseID" Type="int" Nullable="false" />
   </EntityType>
@@ -93,13 +93,13 @@
   </Association>
   <Association Name="FK_CourseStudent_Course">
     <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
-    <End Role="CourseStudent" Type="Self.CourseStudent" Multiplicity="0..1" />
+    <End Role="CourseStudent" Type="Self.CourseStudent" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Courses">
         <PropertyRef Name="CourseID" />
       </Principal>
       <Dependent Role="CourseStudent">
-        <PropertyRef Name="CourseStudentID" />
+        <PropertyRef Name="CourseID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

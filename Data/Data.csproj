@@ -85,6 +85,7 @@
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\CourseStudentCourse.cs" />
+    <Compile Include="ViewModel\CourseTeacher.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DB.edmx">

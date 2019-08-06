@@ -6,12 +6,15 @@ using System.Web.Mvc;
 
 namespace Sisuni.Controllers
 {
-    public class LoginController : Controller
-    {
+    public class LoginController : Controller {
         // GET: Login
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
             return View();
         }
+
+      /*  public ActionResult new(){
+
+            return 
+        }*/
     }
 }

@@ -14,6 +14,12 @@ namespace Data
     
     public partial class Courses
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Courses()
+        {
+            this.CourseStudent = new HashSet<CourseStudent>();
+        }
+    
         public int CourseID { get; set; }
         public string Name { get; set; }
         public string Section { get; set; }
@@ -24,6 +30,7 @@ namespace Data
     
         public virtual Career Career { get; set; }
         public virtual Teacher Teacher { get; set; }
-        public virtual CourseStudent CourseStudent { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CourseStudent> CourseStudent { get; set; }
     }
 }

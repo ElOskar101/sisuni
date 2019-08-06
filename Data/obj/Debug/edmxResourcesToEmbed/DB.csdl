@@ -63,7 +63,7 @@
     <Key>
       <PropertyRef Name="CourseStudentID" />
     </Key>
-    <Property Name="CourseStudentID" Type="Int32" Nullable="false" />
+    <Property Name="CourseStudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="StudentID" Type="Int32" Nullable="false" />
     <Property Name="CourseID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Courses" Relationship="SisuniModel.FK_CourseStudent_Course" FromRole="CourseStudent" ToRole="Courses" />
@@ -149,13 +149,13 @@
   </Association>
   <Association Name="FK_CourseStudent_Course">
     <End Type="SisuniModel.Courses" Role="Courses" Multiplicity="1" />
-    <End Type="SisuniModel.CourseStudent" Role="CourseStudent" Multiplicity="0..1" />
+    <End Type="SisuniModel.CourseStudent" Role="CourseStudent" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Courses">
         <PropertyRef Name="CourseID" />
       </Principal>
       <Dependent Role="CourseStudent">
-        <PropertyRef Name="CourseStudentID" />
+        <PropertyRef Name="CourseID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
