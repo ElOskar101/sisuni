@@ -19,39 +19,49 @@
         <header class="main-header">
             <nav class="navbar navbar-static-top">
                 <div class="container">
+                    <div class="navbar-header">
+                        <a href="" class="navbar-brand"><b>Admin</b>LTE</a>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
+
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Panel principal", "index", "dash")</li>
-                            <li>@Html.ActionLink("Buscar curso", "index", "search")</li>
-  
+
+                            <li> @Html.ActionLink("Buscar Cursos", "Index", "Search")</li>
+
                         </ul>
                     </div>
-                   
+
+
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
+                            <!-- User Account Menu -->
                             <li class="dropdown user user-menu">
+                                <!-- Menu Toggle Button -->
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="~/Content/images/user.jpg" class="user-image" alt="User Image" />
+                                    <!-- The user image in the navbar-->
+                                    <img src="~/Content/images/user.jpg" class="user-image" alt="User Image">
+                                    <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                     <span class="hidden-xs">María Mendieta</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- The user image in the menu -->
                                     <li class="user-header">
-                                        <img src="~/Content/images/user.jpg" height="160" , width="160" class="img-circle" alt="User Image" />
+                                        <img src="~/Content/images/user.jpg" class="img-circle" alt="User Image">
+
                                         <p>
-                                            María Mendienta - Pregrado
-                                            <small>Agosto 03, 2019</small>
+                                            María Mendieta
+                                            <small>24 de Julio de 2019</small>
                                         </p>
                                     </li>
+   
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
-                                        <!--<div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                        </div>-->
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Salir</a>
+                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
                                         </div>
                                     </li>
                                 </ul>

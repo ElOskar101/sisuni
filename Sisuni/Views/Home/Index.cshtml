@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Landing";
     Layout = null;
 }
 <!doctype html>
@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Sisuni/@ViewBag.Title</title>
+    <title>Sisuni|@ViewBag.Title</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -36,8 +36,8 @@
                     <div class="row-fluid">
                         <div class="col-md-6 col-sm-6 text-left">
                             <p>
-                                <strong><i class="fa fa-phone"></i></strong> +90 543 123 45 67 &nbsp;&nbsp;
-                                <strong><i class="fa fa-envelope"></i></strong> <a href="mailto:#">info@yoursite.com</a>
+                                <strong><i class="fa fa-phone"></i></strong> 2204-3112 &nbsp;&nbsp;
+                                <strong><i class="fa fa-envelope"></i></strong> <a href="mailto:#">info@uca.edu.ni</a>
                             </p>
                         </div><!-- end left -->
                         <div class="col-md-6 col-sm-6 hidden-xs text-right">
@@ -62,13 +62,13 @@
                             <span class="icon-bar"></span>
                         </button>
                         <div class="logo-normal">
-                            <a class="navbar-brand"><img src="~/Content/images/logo.png" alt="" height="100" width="150"></a>
+                            <a class="navbar-brand"><img src="~/Content/images/logo.png" alt="" height="80" width="66"></a>
                         </div>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, null)</li>
-                            <li>@Html.ActionLink("Acceder", "Index", "Login", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Acceder", "Login", "Login", new { area = "" }, null)</li>
 
                         </ul>
                     </div>
@@ -80,19 +80,15 @@
             <div class="overlay"></div>
             <div class="home-text-wrapper relative container">
                 <div class="home-message">
-                    <p>Learning Management System</p>
-                    <small>Edulogy is the ideal choice for your organization, your business and your online education system. Create your online course now with unlimited page templates, color options, and menu features.</small>
-                    <div class="btn-wrapper">
-                        <div class="text-center">
-                            <a href="#" class="btn btn-primary wow slideInLeft" style="visibility: visible; animation-name: slideInLeft;">Read More</a> &nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-default wow slideInRight" style="visibility: visible; animation-name: slideInRight;">Buy Now</a>
-                        </div>
-                    </div><!-- end row -->
+                    <p>Universidad Centroamericana</p>
+                    <small>Emplementa su nuevo sistema en línea "Sisuni". Ahora puedes realizar el proceso de inscripción, desde cualquier lugar. Ingresa con tus credenciales enviadas tu correo institucional e inscribe los cursos.</small>
+                   
                 </div>
             </div>
 
             <div id="video_background_video_0" style="z-index: -1; position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; overflow: hidden;">
-                <video width="1450" height="800" autoplay="" loop="" onended="this.play()" style="position: absolute; top: 0px; left: 0px;">
-                    <source src="~/Content/images/video.mp4" type="video/mp4">
+                <video width="1350" height="800" autoplay="" loop="" onended="this.play()" style="position: absolute; top: 0px; left: 0px;">
+                    <source src="~/Content/images/video-landing.mp4" type="video/mp4">
 
                 </video>
             </div>
@@ -103,15 +99,14 @@
                 <div class="clearfix">
                     <div class="pull-left">
                         <div class="cop-logo">
-                            <a href="#"><img src="~/Content/images/logo.png" alt="" height="50" width="50"></a>
+                            <a href="#"><img src="~/Content/images/logo.png" alt="" height="70" width="56"></a>
                         </div>
                     </div>
 
                     <div class="pull-right">
                         <div class="footer-links">
-                            <ul class="list-inline">
-                                <li>Design : <p>Sisuni</p></li>
-                                <li>Distributed by : <p>ElOskar101 - Cristhel </p></li>
+                            <ul >
+                                <li>Desarrollado por : ElOskar101 - Cristhel</li>
                             </ul>
                         </div>
                     </div>

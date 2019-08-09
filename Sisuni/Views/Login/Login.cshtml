@@ -1,0 +1,81 @@
+﻿@model Sisuni.Models.Student
+
+@{
+    ViewBag.Title = " Iniciar Sesión";
+    Layout = null;
+}
+@using System.Web.Optimization;
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sisuni | @ViewBag.Title</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    @Styles.Render("~/bundles/bootstrap/css")
+    <!-- iCheck -->
+    <link href="~/Content/admin/css/blue.css" rel="stylesheet" />
+
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <b>Sisuni</b>
+        </div>
+        <!-- /.login-logo -->
+
+
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+
+            <div class="login-box-body">
+                <p class="login-box-msg">Ingresa para inscribir asignaturas</p>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group has-feedback">
+
+                    @Html.EditorFor(model => model.Identification, new { htmlAttributes = new { @class = "form-control", placeholder="ID" } })
+                </div>
+
+                <div class="form-group has-feedback">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder="Contraseña", type = "password"} })
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button class="btn btn-primary btn-block btn-flat" value="Create">Iniciar sesión</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <p style="text-align: center;">------- O -------</p>
+                <div class="col-xs-12">
+                    @using (Html.BeginForm("index", "home")) {
+                        <button class="btn btn-default btn-block btn-flat">Volver</button>
+                    }
+
+                </div>
+            </div>
+        }
+
+    </div>
+    
+
+
+        @Scripts.Render("~/bundles/bootstrap/js")
+        <script src="~/Content/admin/js/icheck.min.js"></script>
+
+        <script>
+
+            $(function () {
+                $('input').iCheck({
+                    checkboxClass: 'icheckbox_square-blue',
+                    radioClass: 'iradio_square-blue',
+                    increaseArea: '20%' /* optional */
+                });
+            });
+        </script>
+
+
+    </body>
+</html>

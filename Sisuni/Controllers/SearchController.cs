@@ -13,13 +13,16 @@ namespace Sisuni.Controllers{
             return View();
         }
 
-        public ActionResult Search(string section) {
-            /*using (var db = new Context()) {
+        [HttpPost]
+        public ActionResult Index(string section) {
 
-                var list = db.CourseStudent.ToList();
-                return View(list);
-            }*/
-            return View();
+            if(section == null) {
+                return View();
+            } else {
+                return View();
+            }
+            
+            
         }
     }
 

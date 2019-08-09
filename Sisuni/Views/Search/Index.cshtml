@@ -13,18 +13,19 @@
                     <div class="box-primary">
                         <div class="box-header">
                             <h3 class="box-title">Lista de cursos</h3>
-
-                            <div class="box-tools">
-                                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar">
-
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                
+                                <div class="box-tools">
+                                    <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+                                        <!-- /.box-header <input class="form-control pull-right" placeholder="Buscar">-->
+                                        @Html.Editor("section", new { htmlAttributes = new { @class = "form-control pull-right", placeholder = "Buscar", type = "text", name = "table_search" } })
+                                        <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                        </div>
                                     </div>
                                 </div>
+                            
                             </div>
-                        </div>
-                        <!-- /.box-header -->
+                        
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover">
                                 <tbody>
@@ -44,16 +45,6 @@
                                         <td>Lunes / 15:50 - 16:40 / M3. Martes / 13:50 - 14:40 / M2</td>
                                         <td>Orlando Pérez</td>
                                         <td>Inscribir | Vista completa</td>
-                                    </tr>
-                                    <tr>
-                                        <td>220233</td>
-                                        <td>Fundamentos de programación</td>
-                                        <td>4</td>
-                                        <!--<td><span class="label label-success">Approved</span></td>-->
-                                        <td>Lunes / 17:50 - 18:40 / J3. Miércoles / 14:50 - 15:40 / J4</td>
-                                        <td>Orlando Pérez</td>
-                                        <td>Inscribir | Vista completa</td>
-                                        <td>220233</td>
                                     </tr>
                                 </tbody>
                             </table>

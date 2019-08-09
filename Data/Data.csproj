@@ -86,6 +86,7 @@
     </Compile>
     <Compile Include="ViewModel\CourseStudentCourse.cs" />
     <Compile Include="ViewModel\CourseTeacher.cs" />
+    <Compile Include="ViewModel\UserLogin.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DB.edmx">

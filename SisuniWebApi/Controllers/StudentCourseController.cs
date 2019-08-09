@@ -10,7 +10,7 @@ using Data.ViewModels;
 namespace SisuniWebApi.Controllers{
     public class StudentCourseController : ApiController {
 
-
+        [Authorize]
         [HttpPost] // A little post created by two ids. It appears to be intermediate table. 
         public IHttpActionResult Post([FromBody] CourseStudent cs) {
 
@@ -25,7 +25,7 @@ namespace SisuniWebApi.Controllers{
                 return BadRequest();
         }
 
-
+        [Authorize]
         [HttpGet]// Listado de todos los cursos de un usuario (StudenCourse/{id})
         public IEnumerable<CourseStudentCourse> Get(int id) { // We just need it... Do you think we need a Get method without id?
 
@@ -48,6 +48,8 @@ namespace SisuniWebApi.Controllers{
             return (course);
 
         }
+
+        [Authorize]
         [Route("api/StudentCourse/courses/{section}/{careerID}")] // Get the career searched by the student.
         [HttpGet]
         public IEnumerable<CourseStudentCourse> Get(string section, int careerID) { // Filter determinate the courses that student can get
@@ -69,6 +71,7 @@ namespace SisuniWebApi.Controllers{
 
         /* Delete a student's course. I'd create this method for delete and union between Student and Course.
          For that I need two elements wich will find the identification of both column.*/
+        [Authorize]
         [Route("api/StudentCourse/{StudentID}/{CourseID}")]
         [HttpDelete]
         public IHttpActionResult Delete(int StudentID, int CourseID) { // I am not sure if this will work

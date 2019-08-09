@@ -1,0 +1,12 @@
+C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\bin\Release\Data.dll.config
+C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\bin\Release\Data.dll
+C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\bin\Release\Data.pdb
+C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\bin\Release\EntityFramework.dll
+C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\bin\Release\EntityFramework.xml
+C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\obj\Release\Data.csprojAssemblyReference.cache
+C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\obj\Release\Data.csproj.CoreCompileInputs.cache
+C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\obj\Release\Data.csproj.CopyComplete
+C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\obj\Release\Data.dll
+C:\Users\Oscar\Documents\Visual Studio 2017\Projects\Sisuni\Data\obj\Release\Data.pdb

@@ -49,9 +49,10 @@
           <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Identification" Type="int" Nullable="false" />
+          <Property Name="Identification" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="CareerID" Type="int" Nullable="false" />
+          <Property Name="Token" Type="nchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -253,9 +254,10 @@
           <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Identification" Type="Int32" Nullable="false" />
+          <Property Name="Identification" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CareerID" Type="Int32" Nullable="false" />
+          <Property Name="Token" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Career" Relationship="SisuniModel.FK_Student_Career" FromRole="Student" ToRole="Career" />
           <NavigationProperty Name="CourseStudent" Relationship="SisuniModel.FK_CourseStudent_Student" FromRole="Student" ToRole="CourseStudent" />
         </EntityType>
@@ -389,6 +391,7 @@
           <EntitySetMapping Name="Student">
             <EntityTypeMapping TypeName="SisuniModel.Student">
               <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Token" ColumnName="Token" />
                 <ScalarProperty Name="CareerID" ColumnName="CareerID" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Identification" ColumnName="Identification" />
