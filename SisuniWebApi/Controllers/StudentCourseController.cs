@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Data;
 using Data.ViewModels;
+using SisuniWebApi.Models;
 
 namespace SisuniWebApi.Controllers{
     public class StudentCourseController : ApiController {
@@ -53,7 +54,8 @@ namespace SisuniWebApi.Controllers{
         [Route("api/StudentCourse/courses/{section}/{careerID}")] // Get the career searched by the student.
         [HttpGet]
         public IEnumerable<CourseStudentCourse> Get(string section, int careerID) { // Filter determinate the courses that student can get
-
+        
+            try { 
             Context db = new Context();
             var courses = from c in db.Courses join t in db.Teacher on c.TeacherID equals t.TeacherID
                           where c.Section.Equals(section) && c.CareerID.Equals(careerID)
@@ -67,6 +69,10 @@ namespace SisuniWebApi.Controllers{
                               TeacherName = t.FullName
                           };
             return (courses);
+
+            }catch(Exception e) {
+                return (null);
+            }
         }
 
         /* Delete a student's course. I'd create this method for delete and union between Student and Course.
@@ -90,6 +96,33 @@ namespace SisuniWebApi.Controllers{
                     return NotFound();
                 }
             }
+        }
+
+        [Authorize]
+        [Route("api/StudentCourse/{Section}/{StudentID}")]
+        [HttpGet]
+        public IEnumerable<FoundResult> VerifyEnroll(string Section, int StudentID) {
+
+            try { 
+
+            Context db = new Context();
+            Courses foundID = db.Courses.Where(x => x.Section.Equals(Section)).FirstOrDefault();
+                if (foundID != null) {
+
+                    var foundResult = from cs in db.CourseStudent
+                                      where cs.CourseID.Equals(foundID.CourseID) && cs.StudentID.Equals(StudentID)
+                                      select new FoundResult {
+                                          CourseStudentID = cs.CourseStudentID,
+                                          StudentID = cs.StudentID,
+                                          CourseID = cs.CourseID
+                                      };
+                    return (foundResult);
+                } else return null;
+                
+            } catch (Exception e) {
+                return (null);
+            }
+
         }
 
 

@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "Búsqueda";
+﻿@model IEnumerable<Sisuni.Models.CourseStudentCourse>
+@{
+    ViewBag.Title = " Búsqueda";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="wrapper">
@@ -7,56 +8,96 @@
     <div class="content-wrapper">
         <!-- Main content -->
         <section class="content">
+            @if (ViewBag.Full == 1) {
+                <div class="col-md-12">
+                    <div class="alert alert-danger" role="alert">
+                        Al parecer ya tiene todas los cursos correspondientes a este cuatrimestre y no se le permite inscribir más.
+                    </div>
+                </div>
+            }
+
+            @if (ViewBag.Enroll == 1) {
+                <div class="col-md-12">
+                    <div class="alert alert-success" role="alert">
+                        El proceso de inscripción del curso se ha realizado exitosamente.
+                    </div>
+                </div>
+            }
+
+            @if (ViewBag.Full == 2) {
+                <div class="col-md-12">
+                    <div class="alert alert-danger" role="alert">
+                        Ese curso ya se encuentra en la lista de sus cursos inscritos.
+                    </div>
+                </div>
+            }
+
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-xs-12">
+                    @if (ViewBag.NullSearch == 1) {
+                        <p class="text-red">* No ha introducido ningún número de sección para el curso.</p>
+                    }
                     <div class="box-primary">
-                        <div class="box-header">
-                            <h3 class="box-title">Lista de cursos</h3>
-                                
+                        @using (Html.BeginForm()) {
+                            @Html.AntiForgeryToken()
+                            <div class="box-header">
+                                <h3 class="box-title">Lista de cursos</h3>
+
                                 <div class="box-tools">
+
                                     <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
                                         <!-- /.box-header <input class="form-control pull-right" placeholder="Buscar">-->
-                                        @Html.Editor("section", new { htmlAttributes = new { @class = "form-control pull-right", placeholder = "Buscar", type = "text", name = "table_search" } })
+                                        @Html.Editor("section", new { htmlAttributes = new { @class = "form-control pull-right", placeholder = "Sección del curso", type = "text", name = "table_search" } })
                                         <div class="input-group-btn">
                                             <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
-                            
+
                             </div>
-                        
+                        }
+
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover">
                                 <tbody>
-                                    <tr>
-                                        <th>Sección</th>
-                                        <th>Curso</th>
-                                        <th>Créditos</th>
-                                        <th>Horario</th>
-                                        <th>Profesor</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                    <tr>
-                                        <td>220231</td>
-                                        <td>Álgebra lineal</td>
-                                        <td>6</td>
-                                        <!--<td><span class="label label-success">Approved</span></td>-->
-                                        <td>Lunes / 15:50 - 16:40 / M3. Martes / 13:50 - 14:40 / M2</td>
-                                        <td>Orlando Pérez</td>
-                                        <td>Inscribir | Vista completa</td>
-                                    </tr>
+                                    @if (ViewBag.type == 1) {
+                                        if (Model != null) {
+                                            <tr>
+                                                <th>Sección</th>
+                                                <th>Curso</th>
+                                                <th>Créditos</th>
+                                                <th>Horario</th>
+                                                <th>Profesor</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                            foreach (var item in Model) {
+                                                <tr>
+                                                    <td> @Html.DisplayFor(modelItem => item.Section)</td>
+                                                    <td> @Html.DisplayFor(modelItem => item.Name)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Credits)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Schedule)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.TeacherName)</td>
+                                                    <td> <span class="label label-default"> @Html.ActionLink("Inscribir", "Enroll", new { id = item.CourseID }, "Search")</span> </td>
+                                                </tr>
+                                            }
+                                        }
+                                    } @if (ViewBag.Type == 0) {
+                                        <tr>
+                                            <th>Lista vacía</th>
+                                        </tr>
+                                        <tr>
+                                            <th>No se han encontrado cursos con ese código de sección</th>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
                         <div class="card-footer small text-muted">* Recuerde inscribir cursos únicamente de su carrera.</div>
-                        <!-- /.box-body -->
                     </div>
-                    <!-- /.box -->
                 </div>
             </div>
         </section>
-        <!-- /.content -->
     </div>
-
 </div>

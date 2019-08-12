@@ -13,11 +13,11 @@ namespace Sisuni.Filters {
 
                 if (filterContext.Controller is LoginController == false &&
                  filterContext.Controller is HomeController == false)
-                    filterContext.HttpContext.Response.Redirect("~/login/login");
+                    filterContext.HttpContext.Response.Redirect("~/login/login", false);
             } else {
 
                 if (filterContext.Controller is LoginController == true)
-                    filterContext.HttpContext.Response.Redirect("~/home/index");
+                    filterContext.HttpContext.Response.Redirect("~/dash/index", false);
             }
 
             base.OnActionExecuting(filterContext);

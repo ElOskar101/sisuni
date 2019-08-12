@@ -1,7 +1,85 @@
-﻿
+﻿@model IEnumerable<Sisuni.Models.CourseStudentCourse>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = " Panel principal";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="wrapper">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            @if (ViewBag.Deleted == 1) {
+                <div class="col-md-12">
+                    <div class="alert alert-warning" role="alert">
+                        Ha eliminado un curso de su lista. Recuerde inscribir todos los cursos.
+                    </div>
+                </div>
+            }
+            @if (ViewBag.Full == 1) {
+                <div class="col-md-12">
+                    <div class="alert alert-info" role="alert">
+                        ¡Felicitaciones! Ha inscrito correctamente todos los cursos para este cuatrimestre. Te deseamos suerte querido estudiante.
+                    </div>
+                </div>
+            }
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box-primary">
+                        @using (Html.BeginForm()) {
+                            @Html.AntiForgeryToken()
+                            <div class="box-header">
+                                <h3 class="box-title">Cursos inscritos</h3>
+                                <div class="box-tools">
+
+                                </div>
+                            </div>
+                        }
+
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover">
+                                <tbody>
+                                    @if (Model != null) {
+                                        <tr>
+                                            <th>Sección</th>
+                                            <th>Curso</th>
+                                            <th>Créditos</th>
+                                            <th>Horario</th>
+                                            <th>Profesor</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                        foreach (var item in Model) {
+
+                                            <tr>
+                                                <td> @Html.DisplayFor(modelItem => item.Section)</td>
+                                                <td> @Html.DisplayFor(modelItem => item.Name)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.Credits)</td>
+                                                <!--<td><span class="label label-success">Approved</span></td>-->
+                                                <td>@Html.DisplayFor(modelItem => item.Schedule)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.TeacherName)</td>
+                                                <td><span class="label label-default"> @Html.ActionLink("Quitar curso", "Unroll", new { id = item.CourseID }, "Dash") </span></td>
+                                            </tr>
+                                        }
+                                    } else {
+                                        <tr>
+                                            <th>Lista vacía</th>
+                                        </tr>
+                                        <tr>
+                                            <th>No ha inscrito ningún curso aún</th>
+                                        </tr>
+
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        @if (Model == null) {
+                            <div class="card-footer small text-muted">* Realice el proceso de inscripción antes la fecha estipulada.</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
 
 

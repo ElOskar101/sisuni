@@ -28,30 +28,33 @@
         @using (Html.BeginForm()) {
             @Html.AntiForgeryToken()
 
-            <div class="login-box-body">
-                <p class="login-box-msg">Ingresa para inscribir asignaturas</p>
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group has-feedback">
+        <div class="login-box-body">
+            <p class="login-box-msg">Ingresa para inscribir asignaturas</p>
+            @if (ViewBag.BadPassword == 1) {
+            <p class="text-red">* Error al iniciar sesión. Asegúrese que los datos introducidos, sean correctos.</p>
+            }
+            <div class="form-group has-feedback">
 
-                    @Html.EditorFor(model => model.Identification, new { htmlAttributes = new { @class = "form-control", placeholder="ID" } })
-                </div>
+                @Html.EditorFor(model => model.Identification, new { htmlAttributes = new { @class = "form-control", placeholder = "ID" } })
+            </div>
 
-                <div class="form-group has-feedback">
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder="Contraseña", type = "password"} })
-                </div>
+            <div class="form-group has-feedback">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Contraseña", type = "password" } })
+            </div>
 
-                <div class="row">
-                    <div class="col-xs-12">
-                        <button class="btn btn-primary btn-block btn-flat" value="Create">Iniciar sesión</button>
-                    </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-primary btn-block btn-flat" value="Create">Iniciar sesión</button>
                 </div>
             </div>
+        </div>
 
             <div class="row">
                 <p style="text-align: center;">------- O -------</p>
                 <div class="col-xs-12">
                     @using (Html.BeginForm("index", "home")) {
                         <button class="btn btn-default btn-block btn-flat">Volver</button>
+
                     }
 
                 </div>

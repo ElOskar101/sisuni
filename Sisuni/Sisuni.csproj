@@ -154,6 +154,7 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\carousel.css" />
     <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\no-scroll.css" />
     <Content Include="Content\css\prettyPhoto.css" />
     <Content Include="Content\fonts\flaticon.css" />
     <Content Include="Content\fonts\flaticon.html" />
@@ -180,6 +181,11 @@
     <Content Include="Content\js\parallax.js" />
     <Content Include="Content\js\sb-admin.js" />
     <Content Include="Content\js\sb-admin.min.js" />
+    <None Include="Content\js\validate\jquery.validate-vsdoc.js" />
+    <Content Include="Content\js\validate\jquery.validate.js" />
+    <Content Include="Content\js\validate\jquery.validate.min.js" />
+    <Content Include="Content\js\validate\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\js\validate\jquery.validate.unobtrusive.min.js" />
     <Content Include="Content\js\vendor\jquery.slim.js" />
     <Content Include="Content\js\vendor\jquery.slim.min.js" />
     <Content Include="Content\js\vendor\respond.min.js" />
@@ -259,7 +265,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccesToken.cs" />
+    <Compile Include="Models\CourseStudentCourse.cs" />
+    <Compile Include="Models\FoundResult.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\CourseStudent.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -294,6 +303,7 @@
     <Content Include="Views\Dash\Index.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Search\ola.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -328,7 +338,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>59645</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50039/</IISUrl>
+          <IISUrl>http://localhost:50099/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

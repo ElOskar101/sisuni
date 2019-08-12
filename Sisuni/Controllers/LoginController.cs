@@ -13,40 +13,46 @@ namespace Sisuni.Controllers
     public class LoginController :  Controller {
         // GET: Login
 
-        /*public ActionResult Index(Student student) {
-            return View();
-        }*/
-
-
-        public ActionResult Login() {
+        public ActionResult Index() {
+            ViewBag.BadPassword = 0;
 
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(Student student){
+        public async Task<ActionResult> Index(Student student) {
 
+            if (ModelState.IsValid) {
+                string baseURL = "http://localhost:3030/api/";
+                using (var client = new HttpClient()) {
+                    client.BaseAddress = new Uri(baseURL);
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            string baseURL = "http://localhost:3030/api/";
-            using (var client = new HttpClient()) {
-                client.BaseAddress = new Uri(baseURL);
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    var response = await client.PostAsJsonAsync<Student>("login/authenticate/", student);
 
-                var response = await client.PostAsJsonAsync<Student>("login/authenticate", student);
-                
-                User accesToken = await response.Content.ReadAsAsync<User>();
+                    if (response.IsSuccessStatusCode) {
+                        User accesToken = await response.Content.ReadAsAsync<User>();
 
-                
-                if (response.IsSuccessStatusCode) {
-                    Session["Student"] = accesToken;
+                        Session["Name"] = accesToken.Name;
+                        Session["LastName"] = accesToken.LastName;
+                        Session["Identification"] = accesToken.Identification;
+                        Session["Password"] = accesToken.Password;
+                        Session["CareerID"] = accesToken.CareerID;
+                        Session["StudentID"] = accesToken.StudentID;
+                        Session["Token"] = accesToken.Token;
 
-                    Session["Token"] = accesToken.Token;
-                    return RedirectToAction("Index", "Dash");
-                } else {
-                    return View();
+                        return RedirectToAction("Index", "Dash");
+                    } else {
+                        if (response.ReasonPhrase.Equals("Unauthorized"))
+                            ViewBag.BadPassword = 1;
+                        return View();
+                    }
                 }
-            } 
-          }
+            } else {
+                ModelState.AddModelError("Identification", "Email not found or matched");
+                return View(student);
+            }
+        }
     }
 }
