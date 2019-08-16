@@ -49,9 +49,11 @@ namespace Sisuni.Controllers {
                         client.DefaultRequestHeaders.Clear();
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("aplication/json"));
                         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string)(Session["Token"]));
-
-
+                        
                         HttpResponseMessage res = await client.GetAsync(resource);
+                        if (res.ReasonPhrase.Equals("Internal Server Error")) {
+                            return RedirectToAction("Index", "ServerError");
+                        }
 
                         if (res.IsSuccessStatusCode) {
                             var response = res.Content.ReadAsStringAsync().Result;
@@ -66,6 +68,7 @@ namespace Sisuni.Controllers {
                                     return View(csc);
                                 }
                             } catch (Exception e) {
+                                Console.WriteLine(e.StackTrace);
                                 TempData["NullSearch"] = 1;
                                 return RedirectToAction("Index", "Search");
                             }
@@ -99,6 +102,9 @@ namespace Sisuni.Controllers {
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string)(Session["Token"]));
 
                     HttpResponseMessage res = await client.GetAsync(resource);
+                    if (res.ReasonPhrase.Equals("Internal Server Error")) {
+                       RedirectToAction("Index", "ServerError");
+                    }
 
                     if (res.IsSuccessStatusCode) {
                         var response = res.Content.ReadAsStringAsync().Result;
@@ -128,7 +134,11 @@ namespace Sisuni.Controllers {
 
                     var response = await client.PostAsJsonAsync<CourseStudent>("StudentCourse", studentCourse);
 
-                    if (response.IsSuccessStatusCode) {
+                if (response.ReasonPhrase.Equals("Internal Server Error")) {
+                    return RedirectToAction("Index", "ServerError");
+                }
+
+                if (response.IsSuccessStatusCode) {
 
                         TempData["Enroll"] = 1;
                         return RedirectToAction("Index", "Search");

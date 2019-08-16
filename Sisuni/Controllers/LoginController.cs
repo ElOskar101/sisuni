@@ -30,8 +30,10 @@ namespace Sisuni.Controllers
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                     var response = await client.PostAsJsonAsync<Student>("login/authenticate/", student);
-
-                    if (response.IsSuccessStatusCode) {
+                    if(response.ReasonPhrase.Equals("Internal Server Error")) {
+                        return RedirectToAction("Index", "ServerError");
+                    }
+                    if(response.IsSuccessStatusCode) {
                         User accesToken = await response.Content.ReadAsAsync<User>();
 
                         Session["Name"] = accesToken.Name;

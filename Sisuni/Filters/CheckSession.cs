@@ -12,8 +12,10 @@ namespace Sisuni.Filters {
             if(user == null) {
 
                 if (filterContext.Controller is LoginController == false &&
-                 filterContext.Controller is HomeController == false)
-                    filterContext.HttpContext.Response.Redirect("~/login/login", false);
+                 filterContext.Controller is HomeController == false &&
+                 filterContext.Controller is NotFoundController == false &&
+                        filterContext.Controller is ServerErrorController == false)
+                    filterContext.HttpContext.Response.Redirect("~/login/index", false);
             } else {
 
                 if (filterContext.Controller is LoginController == true)

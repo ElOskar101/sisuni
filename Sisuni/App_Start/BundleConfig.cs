@@ -44,10 +44,10 @@ namespace Sisuni.App_Start {
                 .Include(
                 "~/Content/admin/js/jquery.min.js",
                 "~/Content/admin/js/bootstrap.min.js",
-                "~/Content/admin/js/jquery.slimscroll.min.js",
-                "~/Content/admin/js/fastclick.js",
-                "~/Content/admin/js/adminlte.min.js",
-                "~/Content/admin/js/demo.js"
+                //"~/Content/admin/js/jquery.slimscroll.min.js",
+                //"~/Content/admin/js/fastclick.js",
+                "~/Content/admin/js/adminlte.min.js"
+                //"~/Content/admin/js/demo.js"
 
                 ));
            // bundles.Add(new ScriptBundle("~/bundles/js").Include(

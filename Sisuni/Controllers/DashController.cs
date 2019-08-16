@@ -30,16 +30,18 @@ namespace Sisuni.Controllers{
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("aplication/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string)(Session["Token"]));
 
-
                 HttpResponseMessage res = await client.GetAsync(resourse);
+                if (res.ReasonPhrase.Equals("Internal Server Error")) {
+                    return RedirectToAction("Index", "ServerError");
+                }
 
                 if (res.IsSuccessStatusCode) {
                     var response = res.Content.ReadAsStringAsync().Result;
                     csc = JsonConvert.DeserializeObject<List<CourseStudentCourse>>(response);
 
                     if (csc.Count() >= 1) {
-
-                        if(csc.Count() >= 5) {
+                        TempData["Full"] = 99;
+                        if (csc.Count() >= 5) {
                             TempData["Full"] = 1;
                             setDataAlert();
                         }
@@ -52,11 +54,6 @@ namespace Sisuni.Controllers{
                 } else
                     return View();
             }
-
-        }
-        public void setDataAlert() {
-            ViewBag.Full = TempData["Full"];
-            ViewBag.Deleted = TempData["Deleted"];
         }
 
         public async Task<ActionResult> Unroll(int id) {
@@ -72,11 +69,14 @@ namespace Sisuni.Controllers{
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("aplication/json"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string)(Session["Token"]));
 
-                    
                 HttpResponseMessage res = await client.DeleteAsync(resource);
+                if (res.ReasonPhrase.Equals("Internal Server Error")) {
+                    return RedirectToAction("Index", "ServerError");
+                }
 
                 if (res.IsSuccessStatusCode) {
-                    var response = res.Content.ReadAsStringAsync().Result;
+                    TempData["Full"] = 99;
+                    //var response = res.Content.ReadAsStringAsync().Result;
                     //csc = JsonConvert.DeserializeObject<List<CourseStudentCourse>>(response);
                     TempData["Deleted"] = 1;
                     return RedirectToAction("Index", "Dash");
@@ -89,29 +89,34 @@ namespace Sisuni.Controllers{
             }
         }
 
-     /*   public async Task getCount() {
-            string studentID = Session["StudentID"].ToString();
+        /*   public async Task getCount() {
+               string studentID = Session["StudentID"].ToString();
 
-            string resourse = "StudentCourse/" + studentID;
+               string resourse = "StudentCourse/" + studentID;
 
-            using (var client = new HttpClient()) {
+               using (var client = new HttpClient()) {
 
-                client.BaseAddress = new Uri(baseURL);
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("aplication/json"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string)(Session["Token"]));
+                   client.BaseAddress = new Uri(baseURL);
+                   client.DefaultRequestHeaders.Clear();
+                   client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("aplication/json"));
+                   client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string)(Session["Token"]));
 
-                HttpResponseMessage res = await client.GetAsync(resourse);
+                   HttpResponseMessage res = await client.GetAsync(resourse);
 
-                if (res.IsSuccessStatusCode) {
-                    var response = res.Content.ReadAsStringAsync().Result;
-                    csc = JsonConvert.DeserializeObject<List<CourseStudentCourse>>(response);
-                }
-            }
-        }*/
+                   if (res.IsSuccessStatusCode) {
+                       var response = res.Content.ReadAsStringAsync().Result;
+                       csc = JsonConvert.DeserializeObject<List<CourseStudentCourse>>(response);
+                   }
+               }
+           }*/
+
+        public void setDataAlert() {
+            ViewBag.Full = TempData["Full"];
+            ViewBag.Deleted = TempData["Deleted"];
+        }
 
 
-            public ActionResult Logout() {
+        public ActionResult Logout() {
 
             Session["Token"] = null;
             return RedirectToAction("Index", "Home");
